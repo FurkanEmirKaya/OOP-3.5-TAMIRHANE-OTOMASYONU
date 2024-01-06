@@ -4,32 +4,43 @@ import java.util.Scanner;
 public class GirisEkrani implements KontrolMetodlari{
     Scanner scan = new Scanner(System.in);
     Admin a = new Admin();
+    boolean adminlik;
     protected  void girisEkrani(){
         System.out.println("Sisteme hoşgeldiniz!");
-
         do {
             System.out.println("1-Kullanıcı 2-Admin");
             System.out.println("Giriş şeklini seçiniz: ");
             String girdi = scan.nextLine();
             if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) {
+                //Kullanıcı kontrol ve metotları
+                adminlik = false;
 
-            } else if (girdi.equals("2") || girdi.equalsIgnoreCase("Admin")) {
-                boolean c1 = true;
+
+            }
+            if (girdi.equals("2") || girdi.equalsIgnoreCase("Admin")) {
+                boolean kullaniciKontrol;
                 do {
-                    System.out.println("Admin :");
+                    System.out.print("Admin adı:");
                     String isim = scan.nextLine();
-                    System.out.println("Sifre :");
+                    System.out.print("Admin şifresi:");
                     String sifre = scan.nextLine();
-                    if (isim == a.getIsim() || sifre == a.getSifre()) {
+                    if (Objects.equals(isim, a.getIsim()) && Objects.equals(sifre, a.getSifre())) {
                         System.out.println("Admin olarak sisteme giriş yaptınız!!");
-                        c1 = false;
+                        adminlik = true;
+                        kullaniciKontrol = false;
                     } else {
                         System.out.println("Kullanıcı adı veya şifre hatalı!\nTekrar giriş yapınız!");
-                        c1 = true;
+                        kullaniciKontrol = true;
                     }
-                } while (c1);
+                } while (kullaniciKontrol); // Kullanıcının girişi doğru yapıp yapmamasına göre boolean değer döner.
             }
-        }while (true) ;
+            if(adminlik){ // Adminlik işlemlerine buradan devam ediyor.
+                a.addSehirSubeVeUstalar();
+
+            }
+        }while (false) ; // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
+
+
     }
 
 
