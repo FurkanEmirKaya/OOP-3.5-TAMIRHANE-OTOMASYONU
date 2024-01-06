@@ -38,6 +38,41 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
             String eklenecekSube = scan.nextLine();
             txtDosyasinaEkle("Subeler.txt", eklenecekSube);
 
+            int ustaSayaci = 0;
+            while(ustaSayaci<2){
+                System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
+                String eklenecekUsta = scan.nextLine();
+                txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+                ustaSayaci++;
+                if(ustaSayaci>=2){
+                    System.out.println("Usta ekleme işlemine devam etmek ister misiniz?");
+                    System.out.println("1-Evet 2-Hayır");
+                    String cevap = scan.nextLine();
+                    boolean yanitSonuc = true; //
+                    boolean control3 = true;
+                    while (control3) {
+                        if (cevap == "1" || cevap == "Evet") {
+                            yanitSonuc = true;
+                            control3 = false;
+                        } else if (cevap == "2" || cevap == "Hayır") {
+                            yanitSonuc = false;
+                            control3 = false;
+                        } else {
+                            System.out.println("Lütfen geçerli bir tuşlama yapınız.");
+                            control3 = true;
+                        }
+                    }
+                    if(yanitSonuc){
+                        System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
+                        eklenecekUsta = scan.nextLine();
+                        txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+                    }
+
+
+                }
+
+            }
+
             System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
             String eklenecekUsta = scan.nextLine();
             txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
@@ -228,7 +263,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     @Override
-    public void txtDosyasinaEkle(String dosyaAdi, String eklenecekVeri) {
+    public void txtDosyasinaEkle(String dosyaAdi, String eklenecekVeri) {   ////// Bitti
         if(dosyaAdi.equals("Sehirler.txt")){ // Sehirler.txt dosyasına veri ekler.
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
@@ -253,10 +288,8 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
 
-
                 writer.newLine(); // Yeni satır ekler.
-                writer.write(eklenecekVeri); // Ustanın adı eklendi
-
+                writer.write(eklenecekVeri + ustaSecimYap()); // Ustanın adı eklendi
 
 
                 writer.close();
