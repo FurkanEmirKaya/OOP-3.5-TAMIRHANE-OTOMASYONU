@@ -55,17 +55,96 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     protected String ustaSecimYap(){
+         boolean control1 = true;
+         String uzmanlik = null;
+       do{
         System.out.println("Ustanın uzmanlık alanını seçiniz: ");
-        switch (){
-            case 0;
-        }
-        System.out.println("Ustanın tecrübesi ne kadardır?: ");
+        System.out.println("1-Mekanik\n2-Elektrikçi\n3-Kaportacı");
+        String secim = scan.nextLine(); 
+        switch (secim){
+            case "1":
+                System.out.println("Mekanik uzmanlık alanını seçtiniz.");
+                uzmanlik ="Mekanik";
+                control1 = false;
+                break;
+            case "Mekanik":
+                System.out.println("Mekanik uzmanlık alanını seçtiniz.");
+                uzmanlik ="Mekanik";
+                control1 = false;
+                break;
+            case "2":
+                System.out.println("Elektrikci uzmanlık alanını sectiniz");
+                uzmanlik ="Elektrikci";
+                control1 = false;
+                break;
+            case "Elektrikçi":
+                System.out.println("Elektrikci uzmanlık alanını sectiniz");
+                uzmanlik ="Elektrikci";
+                control1 = false;
+                break;
+            case "3":
+                System.out.println("Kaportacı uzmanlık alanı sectiniz");
+                uzmanlik ="Kaportacı";
+                control1 = false;
+                break;
+            case "Kaportacı":
+                System.out.println("Kaportacı uzmanlık alanı sectiniz");
+                uzmanlik ="Kaportacı";
+                control1 = false;
+                break;
+            default:{
+                     System.out.println("Yalnış tuşlama yaptınız lutfen tekrar deneyiniz.");
+                               System.out.println("Sadece numara ya da uzmanlık alanının ismini girin!!");                    
+                    }
+            }
+        }while (control1);
+            boolean control2 = true;
+            String tecrube = null;
+            do {
+             System.out.println("Ustanın tecrübesi nedir?: ");
+             System.out.println("1-Junior(1-3 yıl)\n2-Senior(3-10 yıl)\n3-Master(10+ yıl)");
+              String girdi = scan.nextLine();
+             switch (girdi){
+                 case "1":
+                     System.out.println("Junior tecrübesini sectiniz");
+                      tecrube="Junior";
+                     control2= false;
+                     break;
+                 case "Junior":
+                     System.out.println("Junior tecrübesini sectiniz");
+                     tecrube="Junior";
+                     control2= false;
+                     break;
+                 case "3":
+                     System.out.println("Senior tecrübesini sectiniz");
+                     tecrube="Senior";
+                     control2= false;
+                     break;
+                 case"Senior":
+                     System.out.println("Senior tecrübesini sectiniz");
+                     tecrube="Senior";
+                     control2= false;
+                     break;
+                 case"5":
+                     System.out.println("Master tecrübesini sectiniz");
+                     tecrube ="Master";
+                     control2= false;
+                     break;
+                 case"Master":
+                     System.out.println("Master tecrğbesini secriniz");
+                     tecrube ="Mater";
+                     control2= false;
+                     break;
+                 default:
+                       {  System.out.println("Yanlış tuşlama yaptınız!!");
+                          System.out.println("Lütfen sadece numara veya tecrübe adı giriniz!!!");
+                                       }
+             }
 
+         }while (control2);
 
-        return
+         return uzmanlik +"\t"+ tecrube;
     }
-
-
     /// Getter-Setter metotlar ///////////////////////////////////////////////////
     public String getIsim() {
         return isim;
