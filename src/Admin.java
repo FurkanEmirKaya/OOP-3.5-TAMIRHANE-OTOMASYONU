@@ -1,10 +1,11 @@
+import java.io.*;
 import java.util.Objects;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.Scanner;
+
 public class Admin implements KontrolMetodlari, DosyaIslemleri{
     private String isim ;
     private String sifre ;
+    Scanner scan = new Scanner(System.in);
     /// Constructor ///////////////////////////////////////////////////////////////
     public Admin() {
         isim = "Admin";
@@ -12,14 +13,57 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     /// Metotlar /////////////////////////////////////////////////////////////////
+    public final void adminCalistir(){ // Admini çalıştıran metot
 
+        System.out.println("1-Listeleme 2-Ekleme");
+        String secim1 = scan.nextLine();
+        if(Objects.equals(secim1, "1")){
+            // Buraya listeleme metotu gelecek
+        }
+        if(Objects.equals(secim1,"2")){
+            addSehirSubeVeUstalar();
+        }
+
+    }
     public final void addSehirSubeVeUstalar(){
+
         dosyaOkuVeTxtEkranaYazdir("Sehirler.txt");
-        System.out.println("Eklemek istediğiniz şehri giriniz"); //Şehir ekleme fonksiyonuna alınacak.
+        System.out.print("Eklemek istediğiniz şehri giriniz: "); //Şehir ekleme fonksiyonuna alınacak.
+        String eklenecekSehir = scan.nextLine();
+        txtDosyasinaEkle("Sehirler.txt", eklenecekSehir);
+
+        int subeSayaci = 0;
+        do{ // Şube ve usta eklemek için döngü
+            System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
+            String eklenecekSube = scan.nextLine();
+            txtDosyasinaEkle("Subeler.txt", eklenecekSube);
+
+            System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
+            String eklenecekUsta = scan.nextLine();
+            txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+
+
+
+            System.out.println("Şube eklemeye devam etmek ister misiniz?: ");
+        } while ();
+
+
+
+
         // Buradan sonra HashMap
         dosyaOkuVeTxtEkranaYazdir("Subeler");
     }
 
+    protected String ustaSecimYap(){
+        System.out.println("Ustanın uzmanlık alanını seçiniz: ");
+        switch (){
+            case 0;
+        }
+        System.out.println("Ustanın tecrübesi ne kadardır?: ");
+
+
+        return
+    }
 
 
     /// Getter-Setter metotlar ///////////////////////////////////////////////////
@@ -105,7 +149,44 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     @Override
-    public void txtDosyasinaEkle() {
+    public void txtDosyasinaEkle(String dosyaAdi, String eklenecekVeri) {
+        if(dosyaAdi.equals("Sehirler.txt")){ // Sehirler.txt dosyasına veri ekler.
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
+                writer.newLine(); // Yeni satır ekler.
+                writer.write(eklenecekVeri);
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(dosyaAdi.equals("Subeler.txt")){ // Subeler.txt dosyasına veri ekler.
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
+                writer.newLine(); // Yeni satır ekler.
+                writer.write(eklenecekVeri);
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(dosyaAdi.equals("Ustalar.txt")){ // Ustalar.txt dosyasına veri ekler.
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
 
+
+                writer.newLine(); // Yeni satır ekler.
+                writer.write(eklenecekVeri); // Ustanın adı eklendi
+
+
+
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 }
+
+
