@@ -51,7 +51,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
         }
 
     }
-    public void SehirSubeVeUstalariListeleme(){
+    public final void SehirSubeVeUstalariListeleme(){
         System.out.println("Hangi dosyayı listelemek istersiniz?");
         System.out.println("1-Şehirler 2-Şubeler 3-Ustalar");
         String girdi = scan.nextLine();
