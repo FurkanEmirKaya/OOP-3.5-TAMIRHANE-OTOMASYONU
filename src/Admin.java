@@ -1,4 +1,5 @@
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
         String eklenecekSehir = scan.nextLine();
         txtDosyasinaEkle("Sehirler.txt", eklenecekSehir);
             int subeSayaci = 0;
-          while (subeSayaci<1){
+          while (subeSayaci < 1){
             System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
             String eklenecekSube = scan.nextLine();
             txtDosyasinaEkle("Subeler.txt", eklenecekSube);
@@ -81,9 +82,11 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                                     System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
                                     eklenecekUsta = scan.nextLine();
                                     txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
-                                }  if (Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır")) {
+                                }
+                                else if (Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır")) {
                                     control3 = false;
-                                }  else{
+                                }
+                                else if((!(Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet") && !(Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır"))))){
                                     System.out.println("Lütfen geçerli bir tuşlama yapınız.");
                                 }
                             }
@@ -291,7 +294,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                 BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
 
                 writer.newLine(); // Yeni satır ekler.
-                writer.write(eklenecekVeri + ustaSecimYap()); // Ustanın adı eklendi
+                writer.write(eklenecekVeri + "\t" + ustaSecimYap()); // Ustanın adı eklendi
 
 
                 writer.close();
