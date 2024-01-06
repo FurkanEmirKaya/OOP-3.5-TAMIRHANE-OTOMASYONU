@@ -45,48 +45,37 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                 txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
                 ustaSayaci++;
                 if(ustaSayaci>=2){
-                    System.out.println("Usta ekleme işlemine devam etmek ister misiniz?");
-                    System.out.println("1-Evet 2-Hayır");
-                    String cevap = scan.nextLine();
-                    boolean yanitSonuc = true; //
                     boolean control3 = true;
                     while (control3) {
+                        System.out.println("Usta ekleme işlemine devam etmek ister misiniz?");
+                        System.out.println("1-Evet 2-Hayır");
+                        String cevap = scan.nextLine();
                         if (cevap == "1" || cevap == "Evet") {
-                            yanitSonuc = true;
-                            control3 = false;
+                            System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
+                            eklenecekUsta = scan.nextLine();
+                            txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+                            control3 = true;
                         } else if (cevap == "2" || cevap == "Hayır") {
-                            yanitSonuc = false;
                             control3 = false;
                         } else {
                             System.out.println("Lütfen geçerli bir tuşlama yapınız.");
                             control3 = true;
                         }
                     }
-                    if(yanitSonuc){
-                        System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
-                        eklenecekUsta = scan.nextLine();
-                        txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
-                    }
-
-
                 }
 
             }
 
-            System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
-            String eklenecekUsta = scan.nextLine();
-            txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
-
 
 
             System.out.println("Şube eklemeye devam etmek ister misiniz?: ");
-        } while ();
+        } while (true);
 
 
 
 
         // Buradan sonra HashMap
-        dosyaOkuVeTxtEkranaYazdir("Subeler");
+       // dosyaOkuVeTxtEkranaYazdir("Subeler");
     }
 
     protected String ustaSecimYap(){
