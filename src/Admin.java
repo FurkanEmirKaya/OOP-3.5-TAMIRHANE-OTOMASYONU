@@ -14,30 +14,40 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
     /// Metotlar /////////////////////////////////////////////////////////////////
     public final void adminCalistir(){ // Admini çalıştıran metot
+        boolean enUstDongu = true;
+        while (enUstDongu) {
+            System.out.println("1-Listeleme 2-Ekleme");
+            String secim1 = scan.nextLine();
+            if (Objects.equals(secim1, "1")) {
+                boolean donguKontrol = true;
+                while (donguKontrol) {
+                    SehirSubeVeUstalariListeleme();
+                    System.out.println("Listeleme fonksiyonunu kullanmaya devam etmek ister misiniz?");
+                    System.out.println("1-Evet 2-Hayır");
+                    String secim2 = scan.nextLine();
+                    if (Objects.equals(secim2, "1") || Objects.equals(secim2, "Evet")) {
+                        donguKontrol = true;
+                    } else if (Objects.equals(secim2, "2") || Objects.equals(secim2, "Hayır")) {
+                        donguKontrol = false;
+                    } else if ((!(Objects.equals(secim2, "1") || Objects.equals(secim2, "Evet") && !(Objects.equals(secim2, "2") || Objects.equals(secim2, "Hayır"))))) {
+                        System.out.println("Lütfen geçerli bir tuşlama yapınız.");
+                    }
 
-        System.out.println("1-Listeleme 2-Ekleme");
-        String secim1 = scan.nextLine();
-        if(Objects.equals(secim1, "1")){
-            boolean donguKontrol = true;
-            while (donguKontrol) {
-                SehirSubeVeUstalariListeleme();
-                System.out.println("Listeleme fonksiyonunu kullanmaya devam etmek ister misiniz?");
-                System.out.println("1-Evet 2-Hayır");
-                String secim2 = scan.nextLine();
-                if(Objects.equals(secim2, "1") || Objects.equals(secim2, "Evet")){
-                    donguKontrol = true;
                 }
-                else if(Objects.equals(secim2, "2") || Objects.equals(secim2, "Hayır")){
-                    donguKontrol = false;
-                }
-                else if((!(Objects.equals(secim2, "1") || Objects.equals(secim2, "Evet") && !(Objects.equals(secim2, "2") || Objects.equals(secim2, "Hayır"))))){
-                    System.out.println("Lütfen geçerli bir tuşlama yapınız.");
-                }
-
             }
-        }
-        if(Objects.equals(secim1,"2")){
-            addSehirSubeVeUstalar();
+            if (Objects.equals(secim1, "2")) {
+                addSehirSubeVeUstalar();
+            }
+            System.out.println("Adminlikten çıkmak ister misiniz?");
+            System.out.println("1-Evet 2-Hayır");
+            String secim3 = scan.nextLine();
+            if (Objects.equals(secim3, "1") || Objects.equals(secim3, "Evet")) {
+                enUstDongu = false;
+            } else if (Objects.equals(secim3, "2") || Objects.equals(secim3, "Hayır")) {
+                enUstDongu = true;
+            } else if ((!(Objects.equals(secim3, "1") || Objects.equals(secim3, "Evet") && !(Objects.equals(secim3, "2") || Objects.equals(secim3, "Hayır"))))) {
+                System.out.println("Lütfen geçerli bir tuşlama yapınız.");
+            }
         }
 
     }
@@ -85,7 +95,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
             txtDosyasinaEkle("Subeler.txt", eklenecekSube);
             subeSayaci++;
                ustalarSecBolum();
-               if(subeSayaci>1) {
+
                 boolean control5 = true;
                 do {
                     System.out.println("Şube eklemeye devam etmek ister misiniz?: ");
@@ -104,7 +114,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                             System.out.println("Lütfen geçerli bir tuşlama yapınız.");
                     }
                 } while (control5);
-            }
+
         }
 
 
