@@ -5,4 +5,6 @@ public class Kullanici extends Admin{
         System.out.println(isim);
         System.out.println(sifreler);
     }
+
+
 }

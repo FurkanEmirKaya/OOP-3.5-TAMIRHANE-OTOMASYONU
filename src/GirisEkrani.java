@@ -35,7 +35,8 @@ public class GirisEkrani implements KontrolMetodlari{
                 } while (kullaniciKontrol); // Kullanıcının girişi doğru yapıp yapmamasına göre boolean değer döner.
             }
             if(adminlik){ // Adminlik işlemlerine buradan devam ediyor.
-                a.addSehirSubeVeUstalar();
+                a.adminCalistir();
+
 
             }
         }while (false) ; // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için

@@ -1,5 +1,4 @@
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -19,12 +18,60 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
         System.out.println("1-Listeleme 2-Ekleme");
         String secim1 = scan.nextLine();
         if(Objects.equals(secim1, "1")){
-            // Buraya listeleme metotu gelecek
+            boolean donguKontrol = true;
+            while (donguKontrol) {
+                SehirSubeVeUstalariListeleme();
+                System.out.println("Listeleme fonksiyonunu kullanmaya devam etmek ister misiniz?");
+                System.out.println("1-Evet 2-Hayır");
+                String secim2 = scan.nextLine();
+                if(Objects.equals(secim2, "1") || Objects.equals(secim2, "Evet")){
+                    donguKontrol = true;
+                }
+                else if(Objects.equals(secim2, "2") || Objects.equals(secim2, "Hayır")){
+                    donguKontrol = false;
+                }
+                else if((!(Objects.equals(secim2, "1") || Objects.equals(secim2, "Evet") && !(Objects.equals(secim2, "2") || Objects.equals(secim2, "Hayır"))))){
+                    System.out.println("Lütfen geçerli bir tuşlama yapınız.");
+                }
+
+            }
         }
         if(Objects.equals(secim1,"2")){
             addSehirSubeVeUstalar();
         }
 
+    }
+    public void SehirSubeVeUstalariListeleme(){
+        System.out.println("Hangi dosyayı listelemek istersiniz?");
+        System.out.println("1-Şehirler 2-Şubeler 3-Ustalar");
+        String girdi = scan.nextLine();
+        switch (girdi) {
+            case "1":
+                System.out.println("~~~ Şehirler ~~~");
+                dosyaOkuVeTxtEkranaYazdir("Sehirler.txt");
+                break;
+
+            case "Şehirler":
+                System.out.println("~~~ Şehirler ~~~");
+                dosyaOkuVeTxtEkranaYazdir("Sehirler.txt");
+                break;
+            case "2":
+                System.out.println("~~~ Şubeler ~~~");
+                dosyaOkuVeTxtEkranaYazdir("Subeler.txt");
+                break;
+            case "Şubeler":
+                System.out.println("~~~ Şubeler ~~~");
+                dosyaOkuVeTxtEkranaYazdir("Subeler.txt");
+                break;
+            case "3":
+                System.out.println("~~~ Ustalar ~~~");
+                dosyaOkuVeTxtEkranaYazdir("Ustalar.txt");
+                break;
+            case "Ustalar":
+                System.out.println("~~~ Ustalar ~~~");
+                dosyaOkuVeTxtEkranaYazdir("Ustalar.txt");
+                break;
+        }
     }
     public final void addSehirSubeVeUstalar(){
         dosyaOkuVeTxtEkranaYazdir("Sehirler.txt");
@@ -44,14 +91,17 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                     System.out.println("Şube eklemeye devam etmek ister misiniz?: ");
                     System.out.println("1-Evet\n2-Hayır");
                     String cevap = scan.nextLine();
-                    if (cevap == "1" || cevap == "Evet") {
+                    if (Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet")) {
                         System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
                         eklenecekSube = scan.nextLine();
                         txtDosyasinaEkle("Subeler.txt", eklenecekSube);
                         ustalarSecBolum();
                         control5 = true;
-                    } else if (cevap == "2" || cevap == "Hayır") {
+                    } else if (Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır")) {
                         control5 = false;
+                    }
+                    else if((!(Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet") && !(Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır"))))){
+                            System.out.println("Lütfen geçerli bir tuşlama yapınız.");
                     }
                 } while (control5);
             }
