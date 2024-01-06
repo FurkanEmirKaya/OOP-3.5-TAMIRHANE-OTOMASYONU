@@ -1,17 +1,12 @@
 import java.util.Objects;
 
 public class Admin implements KontrolMetodlari{
-    private String isim = "Admin";
-    private String sifre = "1937";
+    private String isim ;
+    private String sifre ;
     /// Constructor ///////////////////////////////////////////////////////////////
-    public Admin(String isim, String sifre) {
-        while (kontrol()) {
-            if (Objects.equals(this.isim, isim) && Objects.equals(this.sifre, sifre)) {
-
-            } else {
-                System.out.println("Kullanıcı adı veya şifre hatalı!\nTekrar giriş yapınız!");
-            }
-        }
+    public Admin() {
+        isim = "Admin";
+        sifre = "1937";
     }
 
 
