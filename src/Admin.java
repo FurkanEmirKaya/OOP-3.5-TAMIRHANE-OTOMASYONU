@@ -26,50 +26,35 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
     }
     public final void addSehirSubeVeUstalar(){
-
         dosyaOkuVeTxtEkranaYazdir("Sehirler.txt");
         System.out.print("Eklemek istediğiniz şehri giriniz: "); //Şehir ekleme fonksiyonuna alınacak.
         String eklenecekSehir = scan.nextLine();
         txtDosyasinaEkle("Sehirler.txt", eklenecekSehir);
-
-        int subeSayaci = 0;
-        do{ // Şube ve usta eklemek için döngü
+            int subeSayaci = 0;
+          while (subeSayaci<1){
             System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
             String eklenecekSube = scan.nextLine();
             txtDosyasinaEkle("Subeler.txt", eklenecekSube);
-
-            int ustaSayaci = 0;
-            while(ustaSayaci<2){
-                System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
-                String eklenecekUsta = scan.nextLine();
-                txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
-                ustaSayaci++;
-                if(ustaSayaci>=2){
-                    boolean control3 = true;
-                    while (control3) {
-                        System.out.println("Usta ekleme işlemine devam etmek ister misiniz?");
-                        System.out.println("1-Evet 2-Hayır");
-                        String cevap = scan.nextLine();
-                        if (cevap == "1" || cevap == "Evet") {
-                            System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
-                            eklenecekUsta = scan.nextLine();
-                            txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
-                            control3 = true;
-                        } else if (cevap == "2" || cevap == "Hayır") {
-                            control3 = false;
-                        } else {
-                            System.out.println("Lütfen geçerli bir tuşlama yapınız.");
-                            control3 = true;
-                        }
+            subeSayaci++;
+               ustalarSecBolum();
+               if(subeSayaci>1) {
+                boolean control5 = true;
+                do {
+                    System.out.println("Şube eklemeye devam etmek ister misiniz?: ");
+                    System.out.println("1-Evet\n2-Hayır");
+                    String cevap = scan.nextLine();
+                    if (cevap == "1" || cevap == "Evet") {
+                        System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
+                        eklenecekSube = scan.nextLine();
+                        txtDosyasinaEkle("Subeler.txt", eklenecekSube);
+                        ustalarSecBolum();
+                        control5 = true;
+                    } else if (cevap == "2" || cevap == "Hayır") {
+                        control5 = false;
                     }
-                }
-
+                } while (control5);
             }
-
-
-
-            System.out.println("Şube eklemeye devam etmek ister misiniz?: ");
-        } while (true);
+        }
 
 
 
@@ -78,6 +63,34 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
        // dosyaOkuVeTxtEkranaYazdir("Subeler");
     }
 
+                public final void ustalarSecBolum(){ //Ustalar boılumu secim ve kontrol işlemleri
+
+                    int ustaSayaci = 0;
+                    while (ustaSayaci < 2) {
+                        System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
+                        String eklenecekUsta = scan.nextLine();
+                        txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+                        ustaSayaci++;
+                        boolean control3 = true;
+                        if (ustaSayaci >= 2) {
+                            while (control3) {
+                                System.out.println("Usta ekleme işlemine devam etmek ister misiniz?");
+                                System.out.println("1-Evet 2-Hayır");
+                                String cevap = scan.nextLine();
+                                if (Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet")) {
+                                    System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
+                                    eklenecekUsta = scan.nextLine();
+                                    txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+                                }  if (Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır")) {
+                                    control3 = false;
+                                }  else{
+                                    System.out.println("Lütfen geçerli bir tuşlama yapınız.");
+                                }
+                            }
+                        }
+
+                    }
+                }
     protected String ustaSecimYap(){
          boolean control1 = true;
          String uzmanlik = null;
@@ -139,7 +152,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                      tecrube="Junior";
                      control2= false;
                      break;
-                 case "3":
+                 case "2":
                      System.out.println("Senior tecrübesini sectiniz");
                      tecrube="Senior";
                      control2= false;
@@ -149,7 +162,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                      tecrube="Senior";
                      control2= false;
                      break;
-                 case"5":
+                 case"3":
                      System.out.println("Master tecrübesini sectiniz");
                      tecrube ="Master";
                      control2= false;
