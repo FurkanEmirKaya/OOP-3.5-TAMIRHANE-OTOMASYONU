@@ -8,7 +8,6 @@ public class Kullanici extends Admin{
     }
     public void kullaniciClistir(){
 
-
     }
 
 
