@@ -25,7 +25,7 @@ public class GirisEkrani implements KontrolMetodlari{
                 adminlik = false;
 
 
-
+//sdfsdf
 
             }
 
