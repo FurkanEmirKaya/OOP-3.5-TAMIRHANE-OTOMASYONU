@@ -470,11 +470,12 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     public void dosyaOkuVeArrayListeEkle(String dosyaAdi) { // subeler ve ustalar ArrayListi için metot
           try {
               BufferedReader reader = new BufferedReader(new FileReader(dosyaAdi));
-               String satir= reader.readLine();
+               String satir = "d";
                  while(satir!=null){
-                    if(dosyaAdi=="Subeler.txt"){
+                     satir = reader.readLine();
+                    if(dosyaAdi.equals("Subeler.txt")){
                         subeler.add(satir);
-                    } else if (dosyaAdi=="Ustalar.txt") {
+                    } else if (dosyaAdi.equals("Ustalar.txt")) {
                         ustalar.add(satir);
                     }
                  }
@@ -555,12 +556,8 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     public void LinkedHashMapeEkle(String key, ArrayList<String> values) {
 
 
+    }
 
-              }
-
-
-          }
-
-
+}
 
 
