@@ -265,14 +265,14 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                 case "2":
 
                     System.out.println("Elektrikci uzmanlık alanını sectiniz");
-                    uzmanlik ="Elektrikci";
+                    uzmanlik ="Elektrikçi";
                     control1 = false;
                     break;
 
                     case "Elektrikçi":
 
                         System.out.println("Elektrikci uzmanlık alanını sectiniz");
-                        uzmanlik ="Elektrikci";
+                        uzmanlik ="Elektrikçi";
                         control1 = false;
                         break;
 
@@ -347,7 +347,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                     case "Master":
 
                         System.out.println("Master tecrübesini secriniz");
-                        tecrube ="Mater";
+                        tecrube ="Master";
                         control2= false;
                         break;
 

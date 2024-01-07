@@ -131,13 +131,16 @@ public class GirisEkrani implements KontrolMetodlari {
             String subeline;
             while ((subeline = sehirReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
                 ArrayList<String> ustalar = new ArrayList<>();
-                for (int i = 0; i < 3; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
+                for (int i = 0; i < 2; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
                     String ustaLine = subeReader.readLine();
                     if (ustaLine != null) {
                         ustalar.add(ustaLine);
                     }
                     a.SubelerdenUstalari.put(subeline, ustalar);
                 }
+
+            }
+                            /*
                 System.out.println(a.SehirlerdenSubeleri.keySet());
                 System.out.println(a.SehirlerdenSubeleri.values());
 
@@ -152,11 +155,10 @@ public class GirisEkrani implements KontrolMetodlari {
 
                 System.out.println();
 
-                System.out.println(a.SubelerdenUstalari.get(""));
-                System.out.println(a.SubelerdenUstalari.get(""));
-                System.out.println(a.SubelerdenUstalari.get(""));
-            }
-
+                System.out.println(a.SubelerdenUstalari.get("Nilüfer"));
+                System.out.println(a.SubelerdenUstalari.get("Buca"));
+                System.out.println(a.SubelerdenUstalari.get("Atakum"));
+                */
         } catch (IOException e) {
 
             throw new RuntimeException(e);
