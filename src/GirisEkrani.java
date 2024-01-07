@@ -25,7 +25,7 @@ public class GirisEkrani implements KontrolMetodlari {
             }
 
             if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) {
-                boolean kullamiciKontrol1;
+                boolean kullaniciKontrol1;
                 do {
                     System.out.println("Kullanıcı adı: ");
                     String isim = scan.nextLine();
@@ -35,12 +35,12 @@ public class GirisEkrani implements KontrolMetodlari {
                         System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
                         //HashMap ten bilgiler yazdırılacak
                         adminlik = false;
-                        kullamiciKontrol1 = false;
+                        kullaniciKontrol1 = false;
                     } else {
                         System.out.println("Kullanıcı adı veya şifresini yanlış giridiniz");
-                        kullamiciKontrol1 = true;
+                        kullaniciKontrol1 = true;
                     }
-                } while (kullamiciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
+                } while (kullaniciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
 
             }
 
@@ -83,25 +83,29 @@ public class GirisEkrani implements KontrolMetodlari {
     }
 
 
-    public  void linkedHashMapDoldur() {
-                     try {
+    public  void linkedHashMapDoldur() { // Program başladığında default txtlerimizden verileri okur ve hashmapleri oluşturur. // Subeler ve Ustlar Hashmapi de yazılacak
 
-                         BufferedReader sehirReader = new BufferedReader(new FileReader("Sehirler.txt"));
-                         BufferedReader subeReader = new BufferedReader(new FileReader("Subeler.txt"));
+        try {
 
-                         String sehirline;
-                         while ((sehirline = sehirReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
-                             ArrayList<String> subeler = new ArrayList<>();
-                             for(int i = 0 ; i < 3; i++){ // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
-                                    String subeLine = subeReader.readLine();
-                                    if (subeLine != null) {
-                                        subeler.add(subeLine);
-                                    }
-                                    a.SehirlerdenSubeleri.put(sehirline, subeler);
-                            }
+            BufferedReader sehirReader = new BufferedReader(new FileReader("Sehirler.txt"));
+            BufferedReader subeReader = new BufferedReader(new FileReader("Subeler.txt"));
 
+            String sehirline;
+            while ((sehirline = sehirReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
+                ArrayList<String> subeler = new ArrayList<>();
+                for (int i = 0; i < 3; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
+                    String subeLine = subeReader.readLine();
+                    if (subeLine != null) {
+                        subeler.add(subeLine);
+                    }
+                    a.SehirlerdenSubeleri.put(sehirline, subeler);
+                }
 
-                         }
+            }
+                         /*
+
+                         ÇAĞIRMA FONKSİYONLARI
+
                          System.out.println(a.SehirlerdenSubeleri.keySet());
                          System.out.println(a.SehirlerdenSubeleri.values());
 
@@ -112,14 +116,55 @@ public class GirisEkrani implements KontrolMetodlari {
                          System.out.println(a.SehirlerdenSubeleri.get("Samsun"));
 
 
-                     } catch (IOException e) {
-                         throw new RuntimeException(e);
-                     }
+                          */
+        } catch (IOException e) {
 
-                 }
+            throw new RuntimeException(e);
+
+        }
+
+        try {
+
+            BufferedReader sehirReader = new BufferedReader(new FileReader("Subeler.txt"));
+            BufferedReader subeReader = new BufferedReader(new FileReader("Ustalar.txt"));
+
+            String subeline;
+            while ((subeline = sehirReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
+                ArrayList<String> ustalar = new ArrayList<>();
+                for (int i = 0; i < 3; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
+                    String ustaLine = subeReader.readLine();
+                    if (ustaLine != null) {
+                        ustalar.add(ustaLine);
+                    }
+                    a.SubelerdenUstalari.put(subeline, ustalar);
+                }
+                System.out.println(a.SehirlerdenSubeleri.keySet());
+                System.out.println(a.SehirlerdenSubeleri.values());
+
+                System.out.println();
+
+                System.out.println(a.SehirlerdenSubeleri.get("İstanbul"));
+                System.out.println(a.SehirlerdenSubeleri.get("Erzurum"));
+                System.out.println(a.SehirlerdenSubeleri.get("Samsun"));
+
+                System.out.println(a.SehirlerdenSubeleri.keySet());
+                System.out.println(a.SehirlerdenSubeleri.values());
+
+                System.out.println();
+
+                System.out.println(a.SubelerdenUstalari.get(""));
+                System.out.println(a.SubelerdenUstalari.get(""));
+                System.out.println(a.SubelerdenUstalari.get(""));
+            }
+
+        } catch (IOException e) {
+
+            throw new RuntimeException(e);
+
+        }
 
 
-
+    }
 
 
 

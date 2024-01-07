@@ -204,7 +204,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                         System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
                         String eklenecekUsta = scan.nextLine();
                         txtDosyasinaEkle("Ustalar.txt", eklenecekUsta); // DosyaIslemleri Interfacesinden override edilen metot çağrılır.
-
+                        //Burada
                         boolean control3 = true; // Usta ekleme işlemine devam edilip edilmeyeceğini kontrol eden değişken.
 
                             while (control3) {
@@ -213,12 +213,13 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                                 System.out.println("1-Evet 2-Hayır");
                                 String cevap = scan.nextLine(); // Kullanıcıdan cevap alınır.
 
+
                                 if (Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet")) { // Kullanıcı evet derse tekra usta ekleme işlemine devam edilir.
 
                                     System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
                                     eklenecekUsta = scan.nextLine();
                                     txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
-
+                                    //Burada
                                 }
 
                                 else if (Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır")) { // Kullanıcı hayır derse usta ekleme işlemine devam edilmez.
@@ -291,7 +292,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
             default:{ // Yanlış tuşlama yapıldığında default case çalışır ve döngü başa döner.
 
-                System.out.println("Yalnış tuşlama yaptınız lutfen tekrar deneyiniz.");
+                System.out.println("YanLış tuşlama yaptınız lutfen tekrar deneyiniz.");
                                System.out.println("Sadece numara ya da uzmanlık alanının ismini girin!!");                    
                     }
             }
@@ -364,6 +365,10 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
          return uzmanlik +"\t"+ tecrube;
 
     }
+
+
+
+
     /// Getter-Setter metotlar ///////////////////////////////////////////////////
 
     public String getIsim() {
