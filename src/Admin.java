@@ -336,7 +336,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
                     case"Master":
 
-                        System.out.println("Master tecrğbesini secriniz");
+                        System.out.println("Master tecrübesini secriniz");
                         tecrube ="Mater";
                         control2= false;
                         break;
@@ -356,6 +356,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
     }
     /// Getter-Setter metotlar ///////////////////////////////////////////////////
+
     public String getIsim() {
         return isim;
     }
@@ -373,6 +374,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     /// Interface Metotları ///////////////////////////////////////////////
+
     @Override
     public void girdiKontrol(String girdi) {
 
