@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class GirisEkrani implements KontrolMetodlari{
     Scanner scan = new Scanner(System.in);
     Admin a = new Admin();
+    Kullanici k = new Kullanici();
     boolean adminlik; // Admin olarak giriş yapılıp yapılmadığını kontrol eden değişken
     protected  void girisEkrani(){ // Program başlangıcı.
 
@@ -21,11 +22,22 @@ public class GirisEkrani implements KontrolMetodlari{
             }
 
             if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) {
-                //Kullanıcı kontrol ve metotları
-                adminlik = false;
-
-
-//sdfsdf
+                boolean kullamiciKontrol1;
+                do{
+                 System.out.println("Kullanıcı adı: ");
+                 String isim = scan.nextLine();
+                 System.out.println("Sifre :");
+                 String sifre = scan.nextLine();
+                if(k.SubelerdenUstalari.containsValue(isim)&& Objects.equals(k.getSifre(), "1926")){
+                    System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
+                    //HashMap ten bilgiler yazdırılacak
+                    adminlik = false;
+                    kullamiciKontrol1=false;
+                }else {
+                    System.out.println("Kullanıcı adı veya şifresini yanlış giridiniz");
+                     kullamiciKontrol1=true;
+                     }
+                }while (kullamiciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
 
             }
 
@@ -58,7 +70,8 @@ public class GirisEkrani implements KontrolMetodlari{
             if(adminlik){ // Eğer kullanıcı doğru giriş yaptıysa adminlik işlemlerine buradan devam ediyor.
 
                 a.adminCalistir(); // Admin arayüzü çalıştırılıyor.
-
+            } else  {
+                k.kullaniciClistir();
             }
         }while (true) ; // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 

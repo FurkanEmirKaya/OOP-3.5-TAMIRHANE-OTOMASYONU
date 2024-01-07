@@ -1,10 +1,34 @@
 public class Kullanici extends Admin{
 
-    public Kullanici(String isim, String sifreler) {
-        isim = "sadfa";
-        System.out.println(isim);
-        System.out.println(sifreler);
+    private String  isim;
+    private String sifre;
+
+    public Kullanici() {
+      this.sifre="1926";
+    }
+    public void kullaniciClistir(){
+
+
     }
 
 
+    @Override
+    public String getIsim() {
+        return isim;
+    }
+
+    @Override
+    public void setIsim(String isim) {
+        this.isim = isim;
+    }
+
+    @Override
+    public String getSifre() {
+        return sifre;
+    }
+
+    @Override
+    public void setSifre(String sifre) {
+        this.sifre = sifre;
+    }
 }
