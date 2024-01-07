@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class GirisEkrani implements KontrolMetodlari {
     protected void girisEkrani() { // Program başlangıcı.
 
         System.out.println("Sisteme hoşgeldiniz!");
-
+        linkedHashMapDoldur();
         do {
 
             System.out.println("1-Kullanıcı 2-Admin");
@@ -74,6 +75,7 @@ public class GirisEkrani implements KontrolMetodlari {
                 a.adminCalistir(); // Admin arayüzü çalıştırılıyor.
             } else {
                 k.kullaniciClistir();
+
             }
         } while (true); // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 
@@ -81,23 +83,35 @@ public class GirisEkrani implements KontrolMetodlari {
     }
 
 
-    public  void linkeDhashMapDoldur(String sehir, String sube, String usta) {
+    public  void linkedHashMapDoldur() {
                      try {
-                         BufferedReader reader = new BufferedReader(new FileReader("Sehirler.txt"));
-                         String line = "0";
-                         while (line != null) {
-                            for(int i =1;i<=8;i++){
-                                line = reader.readLine();
-                                for(int j=0;j<=2;j++){
-                                     a.subeler.indexOf(j);
-                                }
 
-                                a.SehirlerdenSubeleri.put(line,)
+                         BufferedReader sehirReader = new BufferedReader(new FileReader("Sehirler.txt"));
+                         BufferedReader subeReader = new BufferedReader(new FileReader("Subeler.txt"));
 
+                         String sehirline;
+                         while ((sehirline = sehirReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
+                             ArrayList<String> subeler = new ArrayList<>();
+                             for(int i = 0 ; i < 3; i++){ // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
+                                    String subeLine = subeReader.readLine();
+                                    if (subeLine != null) {
+                                        subeler.add(subeLine);
+                                    }
+                                    a.SehirlerdenSubeleri.put(sehirline, subeler);
                             }
 
 
                          }
+                         System.out.println(a.SehirlerdenSubeleri.keySet());
+                         System.out.println(a.SehirlerdenSubeleri.values());
+
+                         System.out.println();
+
+                         System.out.println(a.SehirlerdenSubeleri.get("İstanbul"));
+                         System.out.println(a.SehirlerdenSubeleri.get("Erzurum"));
+                         System.out.println(a.SehirlerdenSubeleri.get("Samsun"));
+
+
                      } catch (IOException e) {
                          throw new RuntimeException(e);
                      }

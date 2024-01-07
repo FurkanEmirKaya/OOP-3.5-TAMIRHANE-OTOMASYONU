@@ -8,10 +8,10 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     private String isim ;
     private String sifre ;
     Scanner scan = new Scanner(System.in);
-    LinkedHashMap< String, ArrayList<String> > SehirlerdenSubeleri = new LinkedHashMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
-    LinkedHashMap< String, ArrayList<String> > SubelerdenUstalari = new LinkedHashMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
-    ArrayList<String> subeler = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şehirde ilgili indexte şube adı tutulur.
-    ArrayList<String> ustalar = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şubede ilgili indexten usta adı tutulur.
+    static LinkedHashMap< String,  ArrayList<String> > SehirlerdenSubeleri = new LinkedHashMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
+    static LinkedHashMap< String,  ArrayList<String> > SubelerdenUstalari = new LinkedHashMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
+    static ArrayList<String> subeler = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şehirde ilgili indexte şube adı tutulur.
+    static ArrayList<String> ustalar = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şubede ilgili indexten usta adı tutulur.
 
     /// Constructor ///////////////////////////////////////////////////////////////
     public Admin() {
@@ -161,7 +161,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
             subeSayaci++; // En az bir kere şube girişi yapılmış oldu. Sayaç artırıldı.
 
             ustalarSecBolum(); // Girilen şubeye usta ekleyen metot.
-
+            // BU ANDA
                 boolean control5 = true; // Birden fazla şube eklemek istenme durumunu kontrol eden değişken.
 
                 do {
