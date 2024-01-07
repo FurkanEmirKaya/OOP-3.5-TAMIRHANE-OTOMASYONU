@@ -15,8 +15,13 @@ public class GirisEkrani implements KontrolMetodlari{
             System.out.println("Giriş şeklini seçiniz: ");
             String girdi = scan.nextLine();
 
-            if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) { // Kullanıcı girişi seçildi.
-                //Kullanıcı kontrol ve metotları. İçi doldurulacak.
+            if (girdi.isEmpty()) { // girdi boş mu diye kontrol eder
+                System.out.println("Giriş şekli boş olamaz!"); // hata mesajı yazdırır
+                continue; // döngüyü devam ettirir
+            }
+
+            if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) {
+                //Kullanıcı kontrol ve metotları
                 adminlik = false;
 
 
@@ -55,8 +60,7 @@ public class GirisEkrani implements KontrolMetodlari{
                 a.adminCalistir(); // Admin arayüzü çalıştırılıyor.
 
             }
-
-        }while (false) ; // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
+        }while (true) ; // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 
 
     }
