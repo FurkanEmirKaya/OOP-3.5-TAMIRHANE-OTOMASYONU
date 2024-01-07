@@ -1,12 +1,14 @@
+import java.io.*;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class GirisEkrani implements KontrolMetodlari{
+public class GirisEkrani implements KontrolMetodlari {
     Scanner scan = new Scanner(System.in);
     Admin a = new Admin();
     Kullanici k = new Kullanici();
     boolean adminlik; // Admin olarak giriş yapılıp yapılmadığını kontrol eden değişken
-    protected  void girisEkrani(){ // Program başlangıcı.
+
+    protected void girisEkrani() { // Program başlangıcı.
 
         System.out.println("Sisteme hoşgeldiniz!");
 
@@ -23,21 +25,21 @@ public class GirisEkrani implements KontrolMetodlari{
 
             if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) {
                 boolean kullamiciKontrol1;
-                do{
-                 System.out.println("Kullanıcı adı: ");
-                 String isim = scan.nextLine();
-                 System.out.println("Sifre :");
-                 String sifre = scan.nextLine();
-                if(k.SubelerdenUstalari.containsValue(isim)&& Objects.equals(k.getSifre(), "1926")){
-                    System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
-                    //HashMap ten bilgiler yazdırılacak
-                    adminlik = false;
-                    kullamiciKontrol1=false;
-                }else {
-                    System.out.println("Kullanıcı adı veya şifresini yanlış giridiniz");
-                     kullamiciKontrol1=true;
-                     }
-                }while (kullamiciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
+                do {
+                    System.out.println("Kullanıcı adı: ");
+                    String isim = scan.nextLine();
+                    System.out.println("Sifre :");
+                    String sifre = scan.nextLine();
+                    if (k.SubelerdenUstalari.containsValue(isim) && Objects.equals(k.getSifre(), "1926")) {
+                        System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
+                        //HashMap ten bilgiler yazdırılacak
+                        adminlik = false;
+                        kullamiciKontrol1 = false;
+                    } else {
+                        System.out.println("Kullanıcı adı veya şifresini yanlış giridiniz");
+                        kullamiciKontrol1 = true;
+                    }
+                } while (kullamiciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
 
             }
 
@@ -67,16 +69,51 @@ public class GirisEkrani implements KontrolMetodlari{
 
             }
 
-            if(adminlik){ // Eğer kullanıcı doğru giriş yaptıysa adminlik işlemlerine buradan devam ediyor.
+            if (adminlik) { // Eğer kullanıcı doğru giriş yaptıysa adminlik işlemlerine buradan devam ediyor.
 
                 a.adminCalistir(); // Admin arayüzü çalıştırılıyor.
-            } else  {
+            } else {
                 k.kullaniciClistir();
             }
-        }while (true) ; // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
+        } while (true); // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 
 
     }
+
+
+    public  void linkeDhashMapDoldur(String sehir, String sube, String usta) {
+                     try {
+                         BufferedReader reader = new BufferedReader(new FileReader("Sehirler.txt"));
+                         String line = "0";
+                         while (line != null) {
+                            for(int i =1;i<=8;i++){
+                                line = reader.readLine();
+                                for(int j=0;j<=2;j++){
+                                     a.subeler.indexOf(j);
+                                }
+
+                                a.SehirlerdenSubeleri.put(line,)
+
+                            }
+
+
+                         }
+                     } catch (IOException e) {
+                         throw new RuntimeException(e);
+                     }
+
+                 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
