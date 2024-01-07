@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -6,10 +8,17 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     private String isim ;
     private String sifre ;
     Scanner scan = new Scanner(System.in);
+    LinkedHashMap< String, ArrayList<String> > SehirlerdenSubeleri = new LinkedHashMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
+    LinkedHashMap< String, ArrayList<String> > SubelerdenUstalari = new LinkedHashMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
+    ArrayList<String> subeler = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şehirde ilgili indexte şube adı tutulur.
+    ArrayList<String> ustalar = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şubede ilgili indexten usta adı tutulur.
+
     /// Constructor ///////////////////////////////////////////////////////////////
     public Admin() {
+
         isim = "Admin";
         sifre = "1937";
+
     }
 
     /// Metotlar /////////////////////////////////////////////////////////////////
@@ -458,7 +467,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     @Override
-    public void dosyaOkuVeArrayListeEkle() {
+    public void dosyaOkuVeArrayListeEkle() { // subeler ve ustalar ArrayListi için metot
 
     }
 
@@ -521,6 +530,18 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
             }
 
         }
+
+    }
+
+    @Override
+    public String dosyaOkuVeReturnle(String dosyaAdi) {
+
+        return null;
+    }
+
+    @Override
+    public void LinkedHashMapeEkle(String key, ArrayList<String> values) {
+
 
     }
 
