@@ -8,7 +8,8 @@ Furkan Emir KAYA - 22181617011
 public class Main{
     public static void main(String[] args) {
         GirisEkrani giris = new GirisEkrani();
-        giris.girisEkrani();
+
+        giris.girisEkrani(); // Giriş ekranı çalıştırıldı.
 
 
     }
