@@ -146,7 +146,7 @@ public class GirisEkrani implements KontrolMetodlari {
 
                 System.out.println();
 
-                System.out.println(a.SehirlerdenSubeleri.get("İstanbul"));
+                System.out.println(a.SehirlerdenSubeleri.get("Ardahan"));
                 System.out.println(a.SehirlerdenSubeleri.get("Erzurum"));
                 System.out.println(a.SehirlerdenSubeleri.get("Samsun"));
 

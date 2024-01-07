@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Admin implements KontrolMetodlari, DosyaIslemleri{
     private String isim ;
     private String sifre ;
+    private String eklenecekSehir;
+    private String eklenecekSube;
+    private String eklenecekUsta;
     Scanner scan = new Scanner(System.in);
     static LinkedHashMap< String,  ArrayList<String> > SehirlerdenSubeleri = new LinkedHashMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
     static LinkedHashMap< String,  ArrayList<String> > SubelerdenUstalari = new LinkedHashMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
@@ -148,16 +151,16 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
         dosyaOkuVeTxtEkranaYazdir("Sehirler.txt");
         System.out.print("Eklemek istediğiniz şehri giriniz: "); // Şehir ekleme fonksiyonuna alınacak.
-        String eklenecekSehir = scan.nextLine();
-        txtDosyasinaEkle("Sehirler.txt", eklenecekSehir); // Kullanıcının girdiği şehir DosyaIslemleri Interfacesinden override edilen metotla dosyaya eklenir.
+        setEklenecekSehir(scan.nextLine());
+        txtDosyasinaEkle("Sehirler.txt", getEklenecekSehir()); // Kullanıcının girdiği şehir DosyaIslemleri Interfacesinden override edilen metotla dosyaya eklenir.
 
         int subeSayaci = 0; // En az bir kere şube eklendiğini kontrol etmemize yarayan değişken.
 
         while (subeSayaci < 1){
 
             System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
-            String eklenecekSube = scan.nextLine();
-            txtDosyasinaEkle("Subeler.txt", eklenecekSube);
+            setEklenecekSube(scan.nextLine());
+            txtDosyasinaEkle("Subeler.txt", getEklenecekSube());
             subeSayaci++; // En az bir kere şube girişi yapılmış oldu. Sayaç artırıldı.
 
             ustalarSecBolum(); // Girilen şubeye usta ekleyen metot.
@@ -172,8 +175,8 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
                     if (Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet")) { // Kullanıcı Evet derse birden fazla şube eklemeye devam eder.
                         System.out.print("Eklemek istediğiniz şubeyi giriniz: ");
-                        eklenecekSube = scan.nextLine();
-                        txtDosyasinaEkle("Subeler.txt", eklenecekSube);
+                        setEklenecekSube(scan.nextLine());
+                        txtDosyasinaEkle("Subeler.txt", getEklenecekSube());
                         ustalarSecBolum(); // Eklenen şubeye ustaları ekler.
 
                     }
@@ -198,13 +201,15 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
     }
 
-                public final void ustalarSecBolum(){ // Ustalar bolümü seçim ve kontrol işlemleri
+    public final void ustalarSecBolum(){ // Ustalar bolümü seçim ve kontrol işlemleri
 
 
                         System.out.println("Eklemek istediğiniz ustanın adını giriniz: ");
-                        String eklenecekUsta = scan.nextLine();
-                        txtDosyasinaEkle("Ustalar.txt", eklenecekUsta); // DosyaIslemleri Interfacesinden override edilen metot çağrılır.
+                        setEklenecekUsta(scan.nextLine());
+                        txtDosyasinaEkle("Ustalar.txt", getEklenecekUsta()); // DosyaIslemleri Interfacesinden override edilen metot çağrılır.
                         //Burada
+                        linkedHashMapEkle(getEklenecekSehir(),getEklenecekSube(),getEklenecekUsta());
+
                         boolean control3 = true; // Usta ekleme işlemine devam edilip edilmeyeceğini kontrol eden değişken.
 
                             while (control3) {
@@ -217,9 +222,11 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                                 if (Objects.equals(cevap, "1") || Objects.equals(cevap, "Evet")) { // Kullanıcı evet derse tekra usta ekleme işlemine devam edilir.
 
                                     System.out.println("Eklemek istediğiniz ustanın adını giriniz:");
-                                    eklenecekUsta = scan.nextLine();
-                                    txtDosyasinaEkle("Ustalar.txt", eklenecekUsta);
+                                    setEklenecekUsta(scan.nextLine());
+                                    txtDosyasinaEkle("Ustalar.txt", getEklenecekUsta());
                                     //Burada
+                                    linkedHashMapEkle(getEklenecekSehir(),getEklenecekSube(),getEklenecekUsta());
+
                                 }
 
                                 else if (Objects.equals(cevap, "2") || Objects.equals(cevap, "Hayır")) { // Kullanıcı hayır derse usta ekleme işlemine devam edilmez.
@@ -234,9 +241,11 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
                                 }
                             }
-                        }
+                            // BU ANDA
 
-    protected String ustaSecimYap(){ // Ustanın uzmanlık alanı ve tecrübesini seçtiren metot
+    }
+
+    protected String ustaOzellikleriSecimYap(){ // Ustanın uzmanlık alanı ve tecrübesini seçtiren metot
 
         boolean control1 = true; // Uzmanlık alanı seçme döngü kontrolü
         String uzmanlik = null; // Ustanın uzmanlık alanı değişkeni
@@ -257,6 +266,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                     break;
 
                     case "Mekanik":
+
                         System.out.println("Mekanik uzmanlık alanını seçtiniz.");
                         uzmanlik ="Mekanik";
                         control1 = false;
@@ -366,7 +376,17 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
 
     }
 
+    public void linkedHashMapEkle(String mapeEklenecekSehir, String mapeEklenecekSube, String mapeEklenecekUsta){
 
+        ArrayList<String> donusturucuSube = new ArrayList<>(1);
+        donusturucuSube.addFirst(mapeEklenecekSube);
+        SehirlerdenSubeleri.put(mapeEklenecekSehir,donusturucuSube);
+
+        ArrayList<String> donusturucuUsta = new ArrayList<>(1);
+        donusturucuUsta.addFirst(mapeEklenecekUsta);
+        SubelerdenUstalari.put(mapeEklenecekSube, donusturucuUsta);
+
+    }
 
 
     /// Getter-Setter metotlar ///////////////////////////////////////////////////
@@ -386,6 +406,31 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     public void setSifre(String sifreler) {
         this.sifre = sifreler;
     }
+
+    public String getEklenecekSehir() {
+        return eklenecekSehir;
+    }
+
+    public void setEklenecekSehir(String eklenecekSehir) {
+        this.eklenecekSehir = eklenecekSehir;
+    }
+
+    public String getEklenecekSube() {
+        return eklenecekSube;
+    }
+
+    public void setEklenecekSube(String eklenecekSube) {
+        this.eklenecekSube = eklenecekSube;
+    }
+
+    public String getEklenecekUsta() {
+        return eklenecekUsta;
+    }
+
+    public void setEklenecekUsta(String eklenecekUsta) {
+        this.eklenecekUsta = eklenecekUsta;
+    }
+
 
     /// Interface Metotları ///////////////////////////////////////////////
 
@@ -537,7 +582,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                 BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true));  // Kodu sonradan değiştirilebilir olarak açar.
 
                 writer.newLine(); // Yeni satır ekler.
-                writer.write(eklenecekVeri + "\t" + ustaSecimYap()); // Veri eklenirken Ustanın adı, uzmanlık alanı ve tecrübesi eklendi.
+                writer.write(eklenecekVeri + "\t" + ustaOzellikleriSecimYap()); // Veri eklenirken Ustanın adı, uzmanlık alanı ve tecrübesi eklendi.
 
                 writer.close();
 
