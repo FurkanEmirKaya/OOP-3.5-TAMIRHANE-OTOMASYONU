@@ -467,8 +467,21 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
     }
 
     @Override
-    public void dosyaOkuVeArrayListeEkle() { // subeler ve ustalar ArrayListi için metot
+    public void dosyaOkuVeArrayListeEkle(String dosyaAdi) { // subeler ve ustalar ArrayListi için metot
+          try {
+              BufferedReader reader = new BufferedReader(new FileReader(dosyaAdi));
+               String satir= reader.readLine();
+                 while(satir!=null){
 
+                    if(dosyaAdi=="Subeler.txt"){
+                        subeler.add(satir);
+                    } else if (dosyaAdi=="Ustalar.txt") {
+                        ustalar.add(satir);
+                    }
+                 }
+          }catch(IOException i){
+              i.printStackTrace();
+          }
     }
 
     @Override
