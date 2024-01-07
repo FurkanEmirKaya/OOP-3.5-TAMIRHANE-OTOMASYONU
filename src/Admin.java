@@ -320,21 +320,21 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
                         control2= false;
                         break;
 
-                    case"Senior":
+                    case "Senior":
 
                         System.out.println("Senior tecrübesini sectiniz");
                         tecrube="Senior";
                         control2= false;
                         break;
 
-                    case"3":
+                    case "3":
 
                         System.out.println("Master tecrübesini sectiniz");
                         tecrube ="Master";
                         control2= false;
                         break;
 
-                    case"Master":
+                    case "Master":
 
                         System.out.println("Master tecrübesini secriniz");
                         tecrube ="Mater";
