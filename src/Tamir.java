@@ -170,14 +170,16 @@ public  class Tamir {
         BufferedReader reader = new BufferedReader(new FileReader("Depo.txt"));
         if(gettamir()==1||gettamir()==2||gettamir()==3){
             int lineCounter=1;
+            StringBuffer sb = new StringBuffer();
                while(lineCounter<=27){
-                   depo += reader.readLine()+"\n";
+                   sb.append(reader.readLine());
+                   sb.append("\n");
                    lineCounter++;
-                  }
-            System.out.println(depo);
+               }
+            System.out.println(sb);
 
                do {
-                   System.out.println(depo);
+                   System.out.println(sb);
                    parcaSecim();
                    setParcaFiyat(100 * adet);
                }while (control200);
@@ -191,7 +193,7 @@ public  class Tamir {
              System.out.println("Seçmek istediğiniz parçanın numarasını giriniz : ");
               System.out.println();
                  answer = scan.nextInt();
-                   System.out.println(answer+" parçasından "+parcalar.indexOf(answer-1)+" adet vardır!") ;
+                   System.out.println(answer+" parçasından "+parcalar.get(answer-1)+" adet vardır!") ;
                    System.out.println("Kaç adet sipariş etmek istersiniz?");
                     adet  = scan.nextInt();
                         if(adet>parcalar.get(answer)){
