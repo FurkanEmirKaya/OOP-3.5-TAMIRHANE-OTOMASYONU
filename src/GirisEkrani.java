@@ -15,6 +15,7 @@ public class GirisEkrani  {
 
         System.out.println("Sisteme hoşgeldiniz!");
         sortedHashMapDoldur();
+        boolean programiTekrardanBaslat = true;
         do {
 
             System.out.println("1-Kullanıcı 2-Admin");
@@ -81,8 +82,12 @@ public class GirisEkrani  {
                 k.kullaniciCalistir();
 
             }
-        } while (true); // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
-
+            System.out.println("Programı tekrar başlatmak ister misiniz?(E/H)");
+            String cevap = scan.nextLine();
+            if(Objects.equals(cevap, "H")){
+                programiTekrardanBaslat = false;
+            }
+        } while (programiTekrardanBaslat); // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 
     }
 
