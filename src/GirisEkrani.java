@@ -121,21 +121,7 @@ public class GirisEkrani  {
                 }
 
             }
-                         /*
 
-                         ÇAĞIRMA FONKSİYONLARI
-
-                         System.out.println(a.SehirlerdenSubeleri.keySet());
-                         System.out.println(a.SehirlerdenSubeleri.values());
-
-                         System.out.println();
-
-                         System.out.println(a.SehirlerdenSubeleri.get("İstanbul"));
-                         System.out.println(a.SehirlerdenSubeleri.get("Erzurum"));
-                         System.out.println(a.SehirlerdenSubeleri.get("Samsun"));
-
-
-                          */
         } catch (IOException e) {
 
             throw new RuntimeException(e);
@@ -159,25 +145,7 @@ public class GirisEkrani  {
                 }
 
             }
-                            /*
-                System.out.println(a.SehirlerdenSubeleri.keySet());
-                System.out.println(a.SehirlerdenSubeleri.values());
 
-                System.out.println();
-
-                System.out.println(a.SehirlerdenSubeleri.get("Ardahan"));
-                System.out.println(a.SehirlerdenSubeleri.get("Erzurum"));
-                System.out.println(a.SehirlerdenSubeleri.get("Samsun"));
-
-                System.out.println(a.SehirlerdenSubeleri.keySet());
-                System.out.println(a.SehirlerdenSubeleri.values());
-
-                System.out.println();
-
-                System.out.println(a.SubelerdenUstalari.get("Nilüfer"));
-                System.out.println(a.SubelerdenUstalari.get("Buca"));
-                System.out.println(a.SubelerdenUstalari.get("Atakum"));
-                */
         } catch (IOException e) {
 
             throw new RuntimeException(e);
@@ -188,7 +156,7 @@ public class GirisEkrani  {
     }
 
 
-
+/// Getter-Setter Metotlar /////////////////////////////////////////////
     public String getIsim() {
         return isim;
     }

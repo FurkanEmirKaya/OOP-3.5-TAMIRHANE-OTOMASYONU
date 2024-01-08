@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public  class Tamir {
@@ -15,7 +13,7 @@ public  class Tamir {
         private int parcaSayisi;
         private int parcaFiyat;
         ArrayList<Integer> parcalar = new ArrayList<>();
-              public ArrayList parcalarSayisiEkle(){
+              public void parcalarSayisiEkle(){
                   parcalar.add(100);
                   parcalar.add(46);
                   parcalar.add(89);
@@ -44,7 +42,6 @@ public  class Tamir {
                   parcalar.add(77);
                   parcalar.add(10);
                   parcalar.add(100);
-          return parcalar;
               }
       public void tamirEkrani() throws IOException {//Tamir ekranı
                parcalarSayisiEkle();
@@ -55,25 +52,25 @@ public  class Tamir {
                    mekanikTamir();
                    if(getturID()){
                        siparisler();
-                       System.out.println("Borcunuz"+fiyat()+"TL dir");
+                       System.out.println("Borcunuz "+fiyat()+" TL dir");
                    }else {
-                       System.out.println("Borcunuz"+fiyat()+"TL dir");
+                       System.out.println("Borcunuz "+fiyat()+" TL dir");
                    }
                } else if (gettamir()==2) {
                    elektrikAksam();
                        if (getturID()){
                            siparisler();
-                           System.out.println("Borcunuz"+fiyat()+"TL dir");
+                           System.out.println("Borcunuz "+fiyat()+" TL dir");
                        }else {
-                           System.out.println("Borcunuz"+fiyat()+"TL dir");
+                           System.out.println("Borcunuz "+fiyat()+" TL dir");
                        }
                } else if (gettamir()==3) {
                    kaportaTamir();
                    if (getturID()){
                        siparisler();
-                       System.out.println("Borcunuz"+fiyat()+"TL dir");
+                       System.out.println("Borcunuz "+fiyat()+" TL dir");
                    }else {
-                      System.out.println("Borcunuz"+fiyat()+"TL dir"); 
+                      System.out.println("Borcunuz "+fiyat()+" TL dir");
                    }
                }
       }
@@ -104,6 +101,7 @@ public  class Tamir {
         }while (control12);
 
     }
+
           public void mekanikTamir(){
               boolean control100=true;
               
@@ -173,7 +171,7 @@ public  class Tamir {
         if(gettamir()==1){
             int lineCounter=1;
                while(lineCounter<=10){
-                   depo+= reader.readLine()+"\n";
+                   depo += reader.readLine()+"\n";
                    lineCounter++;
                   }
                System.out.println(depo);
@@ -182,7 +180,7 @@ public  class Tamir {
                   } else if (gettamir()==2) {
                int lineCounter =11;
                       while (10<lineCounter&&lineCounter<=19){
-                          depo+= reader.readLine()+"\n";
+                          depo += reader.readLine()+"\n";
                           lineCounter++;
                       }
                       System.out.println(depo);
@@ -192,7 +190,7 @@ public  class Tamir {
                   } else if (gettamir()==3) {
             int lineCounter = 20;
                       while(19<lineCounter&&lineCounter<=27){
-                          depo+= reader.readLine()+"\n";
+                          depo += reader.readLine()+"\n";
                           lineCounter++;
                       }
                       System.out.println(depo);
@@ -207,10 +205,10 @@ public  class Tamir {
              System.out.println("Seçmek istediğiniz parçanın adını giriniz : ");
               System.out.println();
                  answer = scan.nextInt();
-                   System.out.println(answer+"parçasından"+parcalar.indexOf(answer-1)+"adet vardır!") ;
+                   System.out.println(answer+" parçasından "+parcalar.indexOf(answer-1)+" adet vardır!") ;
                    System.out.println("Kaç adet sipariş etmek istersiniz?");
                     adet  = scan.nextInt();
-                      System.out.println("Siparişiniz başarı ile alınmıştır");
+                      System.out.println("Siparişiniz başarı ile alınmıştır.");
                      }
 
 

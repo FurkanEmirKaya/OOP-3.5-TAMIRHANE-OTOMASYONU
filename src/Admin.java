@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Admin implements KontrolMetodlari, DosyaIslemleri {
+public class Admin implements DosyaIslemleri {
     private String isim ;
     private String sifre ;
     private String eklenecekSehir;
@@ -425,17 +425,6 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri {
 
 
     /// Interface Metotları ///////////////////////////////////////////////
-
-    @Override
-    public void girdiKontrol(String girdi) {
-
-    }
-
-    @Override
-    public boolean booleanKontrol() {
-        return false;
-    }
-
     @Override
     public void dosyaOkuVeTxtEkranaYazdir(String dosyaAdi) {
 
@@ -509,29 +498,6 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri {
     }
 
     @Override
-    public void dosyaOkuVeArrayListeEkle(String dosyaAdi) { // subeler ve ustalar ArrayListi için metot
-          try {
-              BufferedReader reader = new BufferedReader(new FileReader(dosyaAdi));
-               String satir = "d";
-                 while(satir!=null){
-                     satir = reader.readLine();
-                    if(dosyaAdi.equals("Subeler.txt")){
-                        subeler.add(satir);
-                    } else if (dosyaAdi.equals("Ustalar.txt")) {
-                        ustalar.add(satir);
-                    }
-                 }
-          }catch(IOException i){
-              i.printStackTrace();
-          }
-    }
-
-    @Override
-    public void arrayListEkranaYazdir() {
-
-    }
-
-    @Override
     public void txtDosyasinaEkle(String dosyaAdi, String eklenecekVeri) {   ////// Bitti
 
         if(dosyaAdi.equals("Sehirler.txt")){ // Sehirler.txt dosyasına satır satır veri ekler.
@@ -587,13 +553,6 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri {
         }
 
     }
-
-    @Override
-    public String dosyaOkuVeReturnle(String dosyaAdi) {
-
-        return null;
-    }
-
 
 }
 
