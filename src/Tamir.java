@@ -80,20 +80,20 @@ public  class Tamir {
     public void islemler(){
         boolean control12=true;
         System.out.println("1-Mekanik tamiri\n2-Elektrik aksam\n3-Kaporta");
-        String yanit = scan.next();
+        int yanit = scan.nextInt();
         do {
             switch (yanit){
-                case "1":
+                case 1:
                     System.out.println("Mekanik tamiri seçtiniz.");
                     control12=false;
                     settamir(1);
                     break;
-                case "2":
+                case 2:
                     System.out.println("Elektrik aksam tamirini seçtiniz.");
                     control12=false;
                     settamir(2);
                     break;
-                case "3":
+                case 3:
                     System.out.println("Kaporta tamir işlemlerini seçtiniz.");
                     control12=false;
                     settamir(3);
@@ -129,9 +129,9 @@ public  class Tamir {
                  
                    boolean control101=true;
                 do {
-                    System.out.println("1-Parça sipariş et\n 2-Parça sipariş etmeden devam et");
-                    int answer = scan.nextInt();
-                    switch (answer){
+                    System.out.println("1-Parça sipariş et\n2-Parça sipariş etmeden devam et");
+                    int yanit = scan.nextInt();
+                    switch (yanit){
                         case 1:
                             System.out.println("Parça sipariş et işlemini seçtiniz.");
                               control101=false;
@@ -170,47 +170,51 @@ public  class Tamir {
     String depo ;
     public void siparisler() throws IOException {//TurID ye gore parca listeleme
         BufferedReader reader = new BufferedReader(new FileReader("Depo.txt"));
-
-                int lineCounter=0;
         if(gettamir()==1){
+            int lineCounter=1;
                while(lineCounter<=10){
-                   depo= reader.readLine();
+                   depo+= reader.readLine()+"\n";
                    lineCounter++;
                   }
+               System.out.println(depo);
                     parcaSecim();
+                    setParcaFiyat(100*adet);
                   } else if (gettamir()==2) {
+               int lineCounter =11;
                       while (10<lineCounter&&lineCounter<=19){
-                          depo= reader.readLine();
+                          depo+= reader.readLine()+"\n";
                           lineCounter++;
                       }
+                      System.out.println(depo);
                       parcaSecim();
+                      setParcaFiyat(100*adet);
 
                   } else if (gettamir()==3) {
+            int lineCounter = 20;
                       while(19<lineCounter&&lineCounter<=27){
-                          depo= reader.readLine();
+                          depo+= reader.readLine()+"\n";
                           lineCounter++;
                       }
+                      System.out.println(depo);
                       parcaSecim();
+                      setParcaFiyat(100*adet);
                   }
 
     }
-            String answer;
+            int answer;
+              int adet;
           public void parcaSecim() throws IOException {
              System.out.println("Seçmek istediğiniz parçanın adını giriniz : ");
-             answer = scan.nextLine();
-              BufferedReader eslestirme = new BufferedReader(new FileReader("Depo.txt"));
-              String line;
-              int satirSayac=0;
-                 while((line=eslestirme.readLine())!=null ){
-                     satirSayac++;
-                     if(Objects.equals(line,answer)){
-                        setParcaSayisi(parcalar.indexOf(satirSayac-1));
-                        setParcaFiyat(1000);
-                         break;
+              System.out.println();
+                 answer = scan.nextInt();
+                   System.out.println(answer+"parçasından"+parcalar.indexOf(answer-1)+"adet vardır!") ;
+                   System.out.println("Kaç adet sipariş etmek istersiniz?");
+                    adet  = scan.nextInt();
+                      System.out.println("Siparişiniz başarı ile alınmıştır");
                      }
 
-                 }
-          }
+
+
                public int fiyat(){//secilen parcalara gore fiyat cıkarma String tecrube ustanun gerekli
 
                           return 1000+getParcaFiyat();
