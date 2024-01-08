@@ -106,7 +106,7 @@ public  class Tamir {
               boolean control100=true;
               
           do {
-              System.out.println("1-Parça sipariş et\n 2-Parça sipariş etmeden devam et");
+              System.out.println("1-Parça sipariş et\n2-Parça sipariş etmeden devam et");
               int answer = scan.nextInt();
               switch (answer){
                   case 1:
@@ -148,7 +148,7 @@ public  class Tamir {
                   
                     boolean control102 = true; 
               do {
-                    System.out.println("1-Parça sipariş et\n 2-Parça sipariş etmeden devam et");
+                    System.out.println("1-Parça sipariş et\n2-Parça sipariş etmeden devam et");
                     int answer = scan.nextInt();
                     switch (answer){
                         case 1:
