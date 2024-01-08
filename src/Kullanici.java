@@ -11,10 +11,10 @@ public class Kullanici extends Admin{
     }
     public void kullaniciCalistir(){
         String taninan =linkedHashMapTanima();
-         System.out.println("Hoş geldiniz "+getIsim()+" Usta "+taninan);
+         System.out.println("Hoş geldiniz "+ getIsim()+" Usta "+taninan);
     }
        public String linkedHashMapTanima(){
-        for(Map.Entry<String,ArrayList<String>> entry:SehirlerdenSubeleri.entrySet()){
+        for(Map.Entry<String, String> entry:SehirlerdenSubeleri.entrySet()){
             if(SubelerdenUstalari.containsKey(entry.getValue())){
 
                       return entry.getKey() +"\t"+ entry.getValue();

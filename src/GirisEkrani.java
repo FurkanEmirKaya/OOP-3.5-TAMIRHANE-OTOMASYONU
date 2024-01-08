@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class GirisEkrani  {
     private String isim;
@@ -13,7 +14,7 @@ public class GirisEkrani  {
     protected void girisEkrani() { // Program başlangıcı.
 
         System.out.println("Sisteme hoşgeldiniz!");
-        linkedHashMapDoldur();
+        sortedHashMapDoldur();
         do {
 
             System.out.println("1-Kullanıcı 2-Admin");
@@ -30,16 +31,17 @@ public class GirisEkrani  {
                 do {
                     System.out.println("Kullanıcı adı: ");
                     k.setIsim(scan.nextLine());
-                    System.out.println("Sifre :");
+                    System.out.println("Sifre:");
                     String sifre = scan.nextLine();
-                    if (k.SubelerdenUstalari.containsValue(isim) && Objects.equals(k.getSifre(), sifre)) {
+                    //Sortlayan metot
+                    if (kullaniciGirisiSortedHashMapKontrol(Admin.SubelerdenUstalari, k.getIsim()) && Objects.equals(k.getSifre(), sifre)) {
                         System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
                         //HashMap ten bilgiler yazdırılacak
                         adminlik = false;
                         kullaniciKontrol1 = false;
                     } else {
 
-                        System.out.println("Kullanıcı adı veya şifresini yanlış giridiniz");
+                        System.out.println("Kullanıcı adı veya şifresini yanlış girdiniz");
                         kullaniciKontrol1 = true;
                     }
                 } while (kullaniciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
@@ -84,10 +86,18 @@ public class GirisEkrani  {
 
     }
 
+    public boolean kullaniciGirisiSortedHashMapKontrol(SortedMap<String, String> map, String value){
+        for (String values : map.values()) {
+            if (values.contains(value)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
-    public  void linkedHashMapDoldur() { // Program başladığında default txtlerimizden verileri okur ve hashmapleri oluşturur. // Subeler ve Ustlar Hashmapi de yazılacak
+    public  void sortedHashMapDoldur() { // Program başladığında default txtlerimizden verileri okur ve hashmapleri oluşturur. // Subeler ve Ustlar Hashmapi de yazılacak
 
         try {
 
@@ -100,9 +110,9 @@ public class GirisEkrani  {
                 for (int i = 0; i < 3; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
                     String subeLine = subeReader.readLine();
                     if (subeLine != null) {
-                        subeler.add(subeLine);
+                        subeler.add(i,subeLine);
                     }
-                    a.SehirlerdenSubeleri.put(sehirline, subeler);
+                    a.SehirlerdenSubeleri.put(sehirline, subeler.get(i));
                 }
 
             }
@@ -138,9 +148,9 @@ public class GirisEkrani  {
                 for (int i = 0; i < 2; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
                     String ustaLine = subeReader.readLine();
                     if (ustaLine != null) {
-                        ustalar.add(ustaLine);
+                        ustalar.add(i,ustaLine);
                     }
-                    a.SubelerdenUstalari.put(subeline, ustalar);
+                    a.SubelerdenUstalari.put(subeline, ustalar.get(i));
                 }
 
             }

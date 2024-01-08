@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Admin implements KontrolMetodlari, DosyaIslemleri {
     private String isim ;
@@ -11,8 +8,8 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri {
     private String eklenecekSube;
     private String eklenecekUsta;
     Scanner scan = new Scanner(System.in);
-    static LinkedHashMap< String,  ArrayList<String> > SehirlerdenSubeleri = new LinkedHashMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
-    static LinkedHashMap< String,  ArrayList<String> > SubelerdenUstalari = new LinkedHashMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
+    static SortedMap < String, String > SehirlerdenSubeleri = new TreeMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
+    static SortedMap < String, String > SubelerdenUstalari = new TreeMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
     static ArrayList<String> subeler = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şehirde ilgili indexte şube adı tutulur.
     static ArrayList<String> ustalar = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şubede ilgili indexten usta adı tutulur.
 
@@ -378,13 +375,8 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri {
     @Override
     public void linkedHashMapEkle(String mapeEklenecekSehir, String mapeEklenecekSube, String mapeEklenecekUsta){
 
-        ArrayList<String> donusturucuSube = new ArrayList<>(1);
-        donusturucuSube.addFirst(mapeEklenecekSube);
-        SehirlerdenSubeleri.put(mapeEklenecekSehir,donusturucuSube);
-
-        ArrayList<String> donusturucuUsta = new ArrayList<>(1);
-        donusturucuUsta.addFirst(mapeEklenecekUsta);
-        SubelerdenUstalari.put(mapeEklenecekSube, donusturucuUsta);
+        SehirlerdenSubeleri.put(mapeEklenecekSehir, mapeEklenecekSube);
+        SubelerdenUstalari.put(mapeEklenecekSube, mapeEklenecekUsta);
 
     }
 
