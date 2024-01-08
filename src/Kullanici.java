@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Map;
+
 public class Kullanici extends Admin{
 
     private String  isim;
@@ -6,9 +9,22 @@ public class Kullanici extends Admin{
     public Kullanici() {
       this.sifre="1926";
     }
-    public void kullaniciClistir(){
-
+    public void kullaniciCalistir(){
+        String taninan =linkedHashMapTanima();
+         System.out.println("Hoş geldiniz "+getIsim()+" Usta "+taninan);
     }
+       public String linkedHashMapTanima(){
+        for(Map.Entry<String,ArrayList<String>> entry:SehirlerdenSubeleri.entrySet()){
+            if(SubelerdenUstalari.containsKey(entry.getValue())){
+
+                      return entry.getKey() +"\t"+ entry.getValue();
+
+            }
+        }
+               return  null;
+
+        }
+
 
 
     @Override

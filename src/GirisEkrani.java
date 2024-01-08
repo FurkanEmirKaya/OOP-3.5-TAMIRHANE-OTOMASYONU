@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class GirisEkrani implements KontrolMetodlari {
+public class GirisEkrani  {
+    private String isim;
     Scanner scan = new Scanner(System.in);
     Admin a = new Admin();
     Kullanici k = new Kullanici();
@@ -28,15 +29,16 @@ public class GirisEkrani implements KontrolMetodlari {
                 boolean kullaniciKontrol1;
                 do {
                     System.out.println("Kullanıcı adı: ");
-                    String isim = scan.nextLine();
+                    k.setIsim(scan.nextLine());
                     System.out.println("Sifre :");
                     String sifre = scan.nextLine();
-                    if (k.SubelerdenUstalari.containsValue(isim) && Objects.equals(k.getSifre(), "1926")) {
+                    if (k.SubelerdenUstalari.containsValue(isim) && Objects.equals(k.getSifre(), sifre)) {
                         System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
                         //HashMap ten bilgiler yazdırılacak
                         adminlik = false;
                         kullaniciKontrol1 = false;
                     } else {
+
                         System.out.println("Kullanıcı adı veya şifresini yanlış giridiniz");
                         kullaniciKontrol1 = true;
                     }
@@ -74,13 +76,15 @@ public class GirisEkrani implements KontrolMetodlari {
 
                 a.adminCalistir(); // Admin arayüzü çalıştırılıyor.
             } else {
-                k.kullaniciClistir();
+                k.kullaniciCalistir();
 
             }
         } while (true); // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 
 
     }
+
+
 
 
     public  void linkedHashMapDoldur() { // Program başladığında default txtlerimizden verileri okur ve hashmapleri oluşturur. // Subeler ve Ustlar Hashmapi de yazılacak
@@ -170,24 +174,18 @@ public class GirisEkrani implements KontrolMetodlari {
 
 
 
-
-
-
-
-
-
-
-
-/// KontrolMetodlari Interfacesi ////////////////////////////////////////////////
-
-    @Override
-    public void girdiKontrol(String girdi) {
-
-
-}
-
-    @Override
-    public boolean booleanKontrol() {
-        return false;
+    public String getIsim() {
+        return isim;
     }
+
+    public void setIsim(String isim) {
+        this.isim = isim;
+    }
+
+
+
+
+
+
+
 }

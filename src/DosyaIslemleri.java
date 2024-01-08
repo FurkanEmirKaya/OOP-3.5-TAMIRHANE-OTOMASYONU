@@ -6,5 +6,5 @@ public interface DosyaIslemleri {
     void arrayListEkranaYazdir(); // Sadece ArrayList'i ekrana yazdıran metot
     void txtDosyasinaEkle(String dosyaAdi, String eklenecekVeri); // TXT dosyasına veriyi ekleyen metot
     String dosyaOkuVeReturnle(String dosyaAdi); // TXT dosyasındaki verileri satır satır okur ve değeri return eder metot.
-    void LinkedHashMapeEkle(String key, ArrayList<String> values); // LinkedHashMape gelen parametreyle LinkedHashMap oluşturan metot.
+    void linkedHashMapEkle(String mapeEklenecekSehir, String mapeEklenecekSube, String mapeEklenecekUsta); // LinkedHashMape gelen parametreyle LinkedHashMap oluşturan metot.
 }

@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Admin implements KontrolMetodlari, DosyaIslemleri{
+public class Admin implements KontrolMetodlari, DosyaIslemleri {
     private String isim ;
     private String sifre ;
     private String eklenecekSehir;
@@ -375,7 +375,7 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
          return uzmanlik +"\t"+ tecrube;
 
     }
-
+    @Override
     public void linkedHashMapEkle(String mapeEklenecekSehir, String mapeEklenecekSube, String mapeEklenecekUsta){
 
         ArrayList<String> donusturucuSube = new ArrayList<>(1);
@@ -602,11 +602,6 @@ public class Admin implements KontrolMetodlari, DosyaIslemleri{
         return null;
     }
 
-    @Override
-    public void LinkedHashMapeEkle(String key, ArrayList<String> values) {
-
-
-    }
 
 }
 
