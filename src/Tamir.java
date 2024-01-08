@@ -168,47 +168,41 @@ public  class Tamir {
     String depo ;
     public void siparisler() throws IOException {//TurID ye gore parca listeleme
         BufferedReader reader = new BufferedReader(new FileReader("Depo.txt"));
-        if(gettamir()==1){
+        if(gettamir()==1||gettamir()==2||gettamir()==3){
             int lineCounter=1;
-               while(lineCounter<=10){
+               while(lineCounter<=27){
                    depo += reader.readLine()+"\n";
                    lineCounter++;
                   }
-               System.out.println(depo);
-                    parcaSecim();
-                    setParcaFiyat(100*adet);
-                  } else if (gettamir()==2) {
-               int lineCounter =11;
-                      while (10<lineCounter&&lineCounter<=19){
-                          depo += reader.readLine()+"\n";
-                          lineCounter++;
-                      }
-                      System.out.println(depo);
-                      parcaSecim();
-                      setParcaFiyat(100*adet);
+            System.out.println(depo);
 
-                  } else if (gettamir()==3) {
-            int lineCounter = 20;
-                      while(19<lineCounter&&lineCounter<=27){
-                          depo += reader.readLine()+"\n";
-                          lineCounter++;
-                      }
-                      System.out.println(depo);
-                      parcaSecim();
-                      setParcaFiyat(100*adet);
-                  }
-
+               do {
+                   System.out.println(depo);
+                   parcaSecim();
+                   setParcaFiyat(100 * adet);
+               }while (control200);
+        }
     }
+
+           boolean control200;
             int answer;
               int adet;
           public void parcaSecim() throws IOException {
-             System.out.println("Seçmek istediğiniz parçanın adını giriniz : ");
+             System.out.println("Seçmek istediğiniz parçanın numarasını giriniz : ");
               System.out.println();
                  answer = scan.nextInt();
                    System.out.println(answer+" parçasından "+parcalar.indexOf(answer-1)+" adet vardır!") ;
                    System.out.println("Kaç adet sipariş etmek istersiniz?");
                     adet  = scan.nextInt();
-                      System.out.println("Siparişiniz başarı ile alınmıştır.");
+                        if(adet>parcalar.get(answer)){
+                            System.out.println("İstediğiniz parçadan depoda bulunmamaktadır!! ");
+                            System.out.println("Lutfen farklı bir parça seçin :");
+                            control200=true;
+                        }else {
+                            System.out.println("Siparişiniz başarı ile alınmıştır.");
+                            control200=false;
+                        }
+
                      }
 
 
