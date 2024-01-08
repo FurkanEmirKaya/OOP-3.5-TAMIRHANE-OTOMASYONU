@@ -1,7 +1,9 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class Kullanici extends Admin{
+   Tamir t = new Tamir() ;
 
     private String  isim;
     private String sifre;
@@ -12,6 +14,11 @@ public class Kullanici extends Admin{
     public void kullaniciCalistir(){
         String taninan =linkedHashMapTanima();
          System.out.println("Hoş geldiniz "+ getIsim()+" Usta "+taninan);
+        try {
+            t.tamirEkrani();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
        public String linkedHashMapTanima(){
         for(Map.Entry<String, String> entry:SehirlerdenSubeleri.entrySet()){

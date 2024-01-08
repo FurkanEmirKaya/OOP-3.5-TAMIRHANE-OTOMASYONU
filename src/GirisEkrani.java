@@ -139,14 +139,14 @@ public class GirisEkrani  {
 
         try {
 
-            BufferedReader sehirReader = new BufferedReader(new FileReader("Subeler.txt"));
-            BufferedReader subeReader = new BufferedReader(new FileReader("Ustalar.txt"));
+            BufferedReader subeReader = new BufferedReader(new FileReader("Subeler.txt"));
+            BufferedReader ustaReader = new BufferedReader(new FileReader("Ustalar.txt"));
 
             String subeline;
-            while ((subeline = sehirReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
+            while ((subeline = subeReader.readLine()) != null) { // Sekiz satırlık default txt sayacı
                 ArrayList<String> ustalar = new ArrayList<>();
                 for (int i = 0; i < 2; i++) { // Üç satır okuyup subeler ArrayListine her bir satırı ekliyor.
-                    String ustaLine = subeReader.readLine();
+                    String ustaLine = ustaReader.readLine();
                     if (ustaLine != null) {
                         ustalar.add(i,ustaLine);
                     }
