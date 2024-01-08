@@ -12,15 +12,15 @@ public class Kullanici extends Admin{
       this.sifre="1926";
     }
     public void kullaniciCalistir(){
-        String taninan =linkedHashMapTanima();
-         System.out.println("Hoş geldiniz "+ getIsim()+" Usta "+taninan);
+        String taninan = sortedMapTanima();
+        System.out.println("Hoş geldiniz "+ getIsim()+" Usta "+taninan);
         try {
             t.tamirEkrani();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-       public String linkedHashMapTanima(){
+       public String sortedMapTanima(){
         for(Map.Entry<String, String> entry:SehirlerdenSubeleri.entrySet()){
             if(SubelerdenUstalari.containsKey(entry.getValue())){
 

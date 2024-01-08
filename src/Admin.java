@@ -10,8 +10,8 @@ public class Admin implements DosyaIslemleri {
     Scanner scan = new Scanner(System.in);
     static SortedMap < String, String > SehirlerdenSubeleri = new TreeMap<>(); // Şehrin adı çağrıldığında o şehirdeki şubeler çağrılabilir. Hepsi ya da teker teker.
     static SortedMap < String, String > SubelerdenUstalari = new TreeMap<>(); // Şubenin adı çağrıldığında o şubedeki çalışan ustalar çağrılabilir. ArrayList.get("index");
-    static ArrayList<String> subeler = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şehirde ilgili indexte şube adı tutulur.
-    static ArrayList<String> ustalar = new ArrayList<>(); // LinkedHashMap üzerinden çağrıldığında şubede ilgili indexten usta adı tutulur.
+    static ArrayList<String> subeler = new ArrayList<>(); // SortedMap üzerinden çağrıldığında şehirde ilgili indexte şube adı tutulur.
+    static ArrayList<String> ustalar = new ArrayList<>(); // SortedMap üzerinden çağrıldığında şubede ilgili indexten usta adı tutulur.
 
     /// Constructor ///////////////////////////////////////////////////////////////
     public Admin() {
