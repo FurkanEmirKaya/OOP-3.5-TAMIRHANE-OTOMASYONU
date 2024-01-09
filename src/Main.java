@@ -12,5 +12,10 @@ public class Main{
         giris.girisEkrani(); // Giriş ekranı çalıştırıldı.
 
 
+
+
     }
 }
+
+
+

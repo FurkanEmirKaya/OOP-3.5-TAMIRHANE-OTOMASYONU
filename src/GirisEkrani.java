@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Objects; //objeler sınıfını çağırır equals falan
 import java.util.Scanner;
 import java.util.SortedMap;
 
@@ -16,64 +16,69 @@ public class GirisEkrani  {
         System.out.println("Sisteme hoşgeldiniz!");
         sortedHashMapDoldur();
         boolean programiTekrardanBaslat = true;
-        do {
+        do {   //// programı tekrardan başlatan döngü
 
-            System.out.println("1-Kullanıcı 2-Admin");
-            System.out.println("Giriş şeklini seçiniz: ");
-            String girdi = scan.nextLine();
+                System.out.println("1-Kullanıcı 2-Admin");
+                System.out.println("Giriş şeklini seçiniz: ");
+                String girdi = scan.nextLine();
 
-            if (girdi.isEmpty()) { // girdi boş mu diye kontrol eder
-                System.out.println("Giriş şekli boş olamaz!"); // hata mesajı yazdırır
-                continue; // döngüyü devam ettirir
-            }
+                boolean hataliGirisSekli = true;
 
-            if (girdi.equals("1") || girdi.equalsIgnoreCase("Kullanıcı")) {
-                boolean kullaniciKontrol1;
-                do {
-                    System.out.println("Kullanıcı adı: ");
-                    k.setIsim(scan.nextLine());
-                    System.out.println("Sifre:");
-                    String sifre = scan.nextLine();
-                    //Sortlayan metot
-                    if (kullaniciGirisiSortedHashMapKontrol(Admin.SubelerdenUstalari, k.getIsim()) && Objects.equals(k.getSifre(), sifre)) {
-                        System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
-                        //HashMap ten bilgiler yazdırılacak
-                        adminlik = false;
-                        kullaniciKontrol1 = false;
-                    } else {
+                if (girdi.isEmpty()) { // girdi boş mu diye kontrol eder
+                    System.out.println("Giriş şekli boş olamaz!"); // hata mesajı yazdırır
+                    continue; // döngüyü devam ettirir
+                }
 
-                        System.out.println("Kullanıcı adı veya şifresini yanlış girdiniz");
-                        kullaniciKontrol1 = true;
-                    }
-                } while (kullaniciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
+                if (girdi.equals("1") || girdi.equals("Kullanıcı")) {
+                    boolean kullaniciKontrol1;
+                    do {
+                        System.out.println("Kullanıcı adı: ");
+                        k.setIsim(scan.nextLine());
+                        System.out.println("Sifre:");
+                        String sifre = scan.nextLine();
+                        //Sortlayan metot
+                        if (kullaniciGirisiSortedHashMapKontrol(Admin.SubelerdenUstalari, k.getIsim()) && Objects.equals(k.getSifre(), sifre)) {
+                            System.out.println("Sisteme başarılı bir şekilde giriş yaptınız");
+                            //HashMap ten bilgiler yazdırılacak
+                            adminlik = false;
+                            kullaniciKontrol1 = false;
+                        } else {
 
-            }
+                            System.out.println("Kullanıcı adı veya şifresini yanlış girdiniz");
+                            kullaniciKontrol1 = true;
+                        }
+                    } while (kullaniciKontrol1); //Kullanıcının kullanıcı girişini dogru yapıp yapmadığını kontrol eder
 
-            if (girdi.equals("2") || girdi.equalsIgnoreCase("Admin")) { // Admin girişi seçildi.
+                } else if (girdi.equals("2") || girdi.equals("Admin")) { // Admin girişi seçildi.
 
-                boolean kullaniciKontrol;
+                    boolean kullaniciKontrol;
 
-                do {
+                    do {
 
-                    System.out.print("Admin adı:"); // Kullanıcıdan Admin adı ve şifrenin alınması
-                    String isim = scan.nextLine();
-                    System.out.print("Admin şifresi:");
-                    String sifre = scan.nextLine();
+                        System.out.print("Admin adı:"); // Kullanıcıdan Admin adı ve şifrenin alınması
+                        String isim = scan.nextLine();
+                        System.out.print("Admin şifresi:");
+                        String sifre = scan.nextLine();
 
-                    if (Objects.equals(isim, a.getIsim()) && Objects.equals(sifre, a.getSifre())) { // Admin adı ve şifre kontrolü
+                        if (Objects.equals(isim, a.getIsim()) && Objects.equals(sifre, a.getSifre())) { // Admin adı ve şifre kontrolü
 
-                        System.out.println("Admin olarak sisteme giriş yaptınız!!");
-                        adminlik = true;
-                        kullaniciKontrol = false;
-                    } else {
+                            System.out.println("Admin olarak sisteme giriş yaptınız!!");
+                            adminlik = true;
+                            kullaniciKontrol = false;
+                        } else {
 
-                        System.out.println("Kullanıcı adı veya şifre hatalı!\nTekrar giriş yapınız!");
+                            System.out.println("Kullanıcı adı veya şifre hatalı!\nTekrar giriş yapınız!");
 
-                        kullaniciKontrol = true;
-                    }
-                } while (kullaniciKontrol); // Kullanıcının admin girişini doğru yapıp yapmamasına göre boolean değer döner.
+                            kullaniciKontrol = true;
+                        }
+                    } while (kullaniciKontrol); // Kullanıcının admin girişini doğru yapıp yapmamasına göre boolean değer döner.
 
-            }
+                } else {
+                    System.out.println("Lütfen doğru giriniz.");
+                    hataliGirisSekli = false;
+                }
+
+                if(hataliGirisSekli){
 
             if (adminlik) { // Eğer kullanıcı doğru giriş yaptıysa adminlik işlemlerine buradan devam ediyor.
 
@@ -87,6 +92,8 @@ public class GirisEkrani  {
             if(Objects.equals(cevap, "H")){
                 programiTekrardanBaslat = false;
             }
+                }
+
         } while (programiTekrardanBaslat); // Bütün kodlar buraya yazılacak. Bütün kodu bitirme ya da tekrar başlatma için
 
     }
@@ -164,8 +171,6 @@ public class GirisEkrani  {
     public void setIsim(String isim) {
         this.isim = isim;
     }
-
-
 
 
 
