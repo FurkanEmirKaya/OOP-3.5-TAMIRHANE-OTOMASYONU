@@ -37,7 +37,7 @@ public class Admin implements DosyaIslemleri {
 
                 while (donguKontrol) {
 
-                    SehirSubeVeUstalariListeleme(); // Şehir, şube ve ustaları listeleyen metot çağrıldı.
+                    sehirSubeVeUstalariListeleme(); // Şehir, şube ve ustaları listeleyen metot çağrıldı.
                     System.out.println("Listeleme fonksiyonunu kullanmaya devam etmek ister misiniz?"); //Kişi yanlış bir girdi yaptığında kod buraya geliyor.
                     System.out.println("1-Evet 2-Hayır"); // Devam edip edilmeyeceğini soruyor.
                     String secim2 = scan.nextLine(); // Seçim yapıyor.
@@ -95,7 +95,7 @@ public class Admin implements DosyaIslemleri {
 
     }
 
-    public final void SehirSubeVeUstalariListeleme(){ // Kullanıcı listelemeyi seçince bu metot çağrılacak.
+    public final void sehirSubeVeUstalariListeleme(){ // Kullanıcı listelemeyi seçince bu metot çağrılacak.
 
         System.out.println("Hangi dosyayı listelemek istersiniz?");
         System.out.println("1-Şehirler 2-Şubeler 3-Ustalar");
@@ -192,7 +192,7 @@ public class Admin implements DosyaIslemleri {
                 } while (control5);
 
         }
-        // Buradan sonra LinkedHashMap ile ilgili işlemler
+        // Buradan sonra SortedMap ile ilgili işlemler
         // dosyaOkuVeTxtEkranaYazdir("Subeler");
 
 
@@ -205,7 +205,7 @@ public class Admin implements DosyaIslemleri {
                         setEklenecekUsta(scan.nextLine());
                         txtDosyasinaEkle("Ustalar.txt", getEklenecekUsta()); // DosyaIslemleri Interfacesinden override edilen metot çağrılır.
                         //Burada
-                        linkedHashMapEkle(getEklenecekSehir(),getEklenecekSube(),getEklenecekUsta());
+                        sortedMapEkle(getEklenecekSehir(),getEklenecekSube(),getEklenecekUsta());
 
                         boolean control3 = true; // Usta ekleme işlemine devam edilip edilmeyeceğini kontrol eden değişken.
 
@@ -222,7 +222,7 @@ public class Admin implements DosyaIslemleri {
                                     setEklenecekUsta(scan.nextLine());
                                     txtDosyasinaEkle("Ustalar.txt", getEklenecekUsta());
                                     //Burada
-                                    linkedHashMapEkle(getEklenecekSehir(),getEklenecekSube(),getEklenecekUsta());
+                                    sortedMapEkle(getEklenecekSehir(),getEklenecekSube(),getEklenecekUsta());
 
                                 }
 
@@ -373,7 +373,7 @@ public class Admin implements DosyaIslemleri {
 
     }
     @Override
-    public void linkedHashMapEkle(String mapeEklenecekSehir, String mapeEklenecekSube, String mapeEklenecekUsta){
+    public void sortedMapEkle(String mapeEklenecekSehir, String mapeEklenecekSube, String mapeEklenecekUsta){
 
         SehirlerdenSubeleri.put(mapeEklenecekSehir, mapeEklenecekSube);
         SubelerdenUstalari.put(mapeEklenecekSube, mapeEklenecekUsta);
