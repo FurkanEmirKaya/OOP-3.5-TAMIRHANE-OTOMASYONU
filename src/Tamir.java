@@ -165,8 +165,8 @@ public  class Tamir {
                     }
                 }while (control102);
             }
-    String depo ;
-    public void siparisler() throws IOException {//TurID ye gore parca listeleme
+
+    public void siparisler() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("Depo.txt"));
         if(gettamir()==1||gettamir()==2||gettamir()==3){
             int lineCounter=1;
@@ -176,7 +176,6 @@ public  class Tamir {
                    sb.append("\n");
                    lineCounter++;
                }
-            System.out.println(sb);
 
                do {
                    System.out.println(sb);
