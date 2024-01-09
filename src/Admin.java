@@ -37,7 +37,7 @@ public class Admin implements DosyaIslemleri {
 
                 while (donguKontrol) {
 
-                    SehirSubeVeUstalariListeleme(); // Şehir, şube ve ustaları listeleyen metot çağrıldı.
+                    sehirSubeVeUstalariListeleme(); // Şehir, şube ve ustaları listeleyen metot çağrıldı.
                     System.out.println("Listeleme fonksiyonunu kullanmaya devam etmek ister misiniz?"); //Kişi yanlış bir girdi yaptığında kod buraya geliyor.
                     System.out.println("1-Evet 2-Hayır"); // Devam edip edilmeyeceğini soruyor.
                     String secim2 = scan.nextLine(); // Seçim yapıyor.
@@ -95,7 +95,7 @@ public class Admin implements DosyaIslemleri {
 
     }
 
-    public final void SehirSubeVeUstalariListeleme(){ // Kullanıcı listelemeyi seçince bu metot çağrılacak.
+    public final void sehirSubeVeUstalariListeleme(){ // Kullanıcı listelemeyi seçince bu metot çağrılacak.
 
         System.out.println("Hangi dosyayı listelemek istersiniz?");
         System.out.println("1-Şehirler 2-Şubeler 3-Ustalar");
